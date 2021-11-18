@@ -1,4 +1,7 @@
-def ripen_tomatoes(start_points):
+"""
+"주변의 토마토들을 익힘" "최소일수" => bfs문제!!
+"""
+def ripen_tomatoes(start_points): # bfs
     queue = deque(start_points) # 무조건 토마토가 있는 좌표가 들어옴
     while queue:
         x, y = queue.popleft()
@@ -11,7 +14,6 @@ def ripen_tomatoes(start_points):
             if valid_point(next_x, next_y):
                 queue.append((next_x, next_y))
                 graph[next_x][next_y] = graph[x][y] + 1 # 방문 처리
-
 
 def valid_point(x, y):
     """
@@ -48,10 +50,10 @@ if __name__ == "__main__":
     import sys; readline = sys.stdin.readline
     sys.setrecursionlimit(10000)
     from collections import deque
-
     width, length = map(int, readline().split())
-    graph = []
+
     # input 정리
+    graph = []
     for _ in range(length):
         graph.append(list(map(int, readline().split())))
 
